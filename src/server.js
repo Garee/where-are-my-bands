@@ -1,5 +1,6 @@
 import express from 'express';
 import path from 'path';
+import axios from 'axios';
 
 import webpack from 'webpack';
 import webpackDevMiddleware from 'webpack-dev-middleware';
@@ -20,8 +21,23 @@ if (!isProduction) {
 const staticPath = path.resolve(__dirname, '../dist');
 app.use(express.static(staticPath));
 
+// Serve a JSON list of events when queried.
+app.get('/events/:artist', (req, res) => {
+  const artist = req.params.artist;
+  const url = `http://api.bandsintown.com/artists/${artist}/events.json?app_id=wamb&api_version=2.0`;
+  axios.get(url)
+    .then(response => {
+      res.json(response.data);
+    })
+    .catch(error => {
+      res.json([]);
+    });
+});
+
 // Run the server on the specified port.
 const port = process.env.PORT || 3000;
-app.listen(port, () => {
+const server = app.listen(port, () => {
   console.log("Server listening at http://localhost:" + port);
 });
+
+export default server;
