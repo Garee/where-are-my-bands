@@ -2,10 +2,22 @@ import React from 'react';
 import classNames from 'classnames'
 
 const cardColors = [
-  'red', 'orange', 'yellow', 'olive', 'green', 'teal', 'blue', 'violet', 'purple', 'pink', 'brown', 'grey', 'black'
+  'red',
+  'orange',
+  'yellow',
+  'olive',
+  'green',
+  'teal',
+  'blue',
+  'violet',
+  'purple',
+  'pink',
+  'brown',
+  'grey',
+  'black'
 ];
 
-function randomColor() {
+function randomCardColor() {
   return cardColors[Math.floor(Math.random() * cardColors.length)];
 }
 
@@ -14,7 +26,9 @@ class SearchResult extends React.Component {
     const eventCards = this.props.events.map(event => {
       const artist = event.artists[0];
       const website = artist.website ? artist.website : artist.facebook_page_url;
-      const mapURL = `https://www.google.com/maps/place/${event.venue.name}/@${event.venue.latitude},${event.venue.longitude},15z`;
+      const venue = event.venue;
+      
+      const mapURL = `https://www.google.com/maps/place/${venue.name}/@${venue.latitude},${venue.longitude},15z`;
 
       // Disable the Buy Tickets button if they are unavailable.
       const buyTicketButtonClass = classNames(
@@ -22,17 +36,18 @@ class SearchResult extends React.Component {
         {'disabled': event.ticket_status === 'unavailable'}
       );
 
-      const cardColor = randomColor()
+      // Randomize the color of our result cards.
+      const cardColor = randomCardColor()
       const cardColorClass = `ui ${cardColor} card`;
 
       return (
         <div className={cardColorClass} key={event.id}>
           <a className="image" href={website}>
-            <img src={event.artists[0].image_url} />
+            <img src={artist.image_url} />
           </a>
           <div className="content">
             <div className="header">
-              {event.artists[0].name} @ {event.venue.name}
+              {artist.name} @ {venue.name}
             </div>
             <div className="meta">
               {event.formatted_location}
