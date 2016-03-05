@@ -1,13 +1,17 @@
 import React from 'react';
+import axios from 'axios';
+import classNames from 'classnames';
 
-import '../styles/search.css';
+import SearchResult from './search-result';
 
 class Search extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      query: ''
+      query: '',
+      isLoading: false,
+      result: []
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -15,33 +19,52 @@ class Search extends React.Component {
   }
 
   handleChange(event) {
-    this.setState({
-        query: event.target.value
-    });
+    this.setState({query: event.target.value});
   }
 
   handleKeyPress(event) {
-    if (event.key === 'Enter') {
-      // Display results.
+    if (event.key === 'Enter' && this.state.query !== '') {
+      this.setState({isLoading: true});
+
+      axios.get(`/events/${this.state.query}`)
+        .then(response => {
+          this.setState({
+            isLoading: false,
+            result: response.data
+          });
+        })
+        .catch(error => {
+          console.error(error);
+          this.setState({
+            isLoading: false,
+            result: []
+          });
+        });
     }
   }
 
   render() {
+    const searchClass = classNames(
+      'ui huge fluid icon input',
+      {'loading': this.state.isLoading}
+    );
+
     return (
-      <div className="ui two column centered grid">
-        <div className="column">
-          <h1>Where are my bands?</h1>
-          <div className="field">
-             <div className="ui huge fluid icon input">
-               <input
-                 type="text"
-                 value={this.state.query}
-                 onChange={this.handleChange}
-                 onKeyPress={this.handleKeyPress} />
-               <i className="search icon"></i>
-             </div>
-           </div>
+      <div className="push-top">
+        <div className="ui four column centered grid">
+          <div className="eight wide column">
+            <div className={searchClass}>
+              <input
+                type="text"
+                value={this.state.query}
+                onChange={this.handleChange}
+                onKeyPress={this.handleKeyPress}
+                autoFocus/>
+              <i className="search icon"></i>
+            </div>
           </div>
+        </div>
+        <SearchResult events={this.state.result} />
       </div>
     );
   }

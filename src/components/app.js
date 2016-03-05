@@ -7,7 +7,7 @@ import '../styles/app.css';
 export default React.createClass({
   render: () => {
     return (
-      <div>
+      <div className="ui center container">
         <Search />
       </div>
     );

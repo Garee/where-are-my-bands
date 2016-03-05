@@ -1,9 +1,10 @@
-html, body {
-  height: 100%;
-}
-
 .app {
   height: 100%;
-  background-color: #E4F1FE;
-  border-top: 5px solid #22313F;
+  background-color: #F8F8F8;
+  border-top: 5px solid #3FC1C9;
+  overflow: auto;
+}
+
+.push-top {
+  margin-top: 20px;
 }

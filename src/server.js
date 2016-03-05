@@ -30,6 +30,7 @@ app.get('/events/:artist', (req, res) => {
       res.json(response.data);
     })
     .catch(error => {
+      console.error(error);
       res.json([]);
     });
 });

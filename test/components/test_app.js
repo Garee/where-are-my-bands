@@ -11,9 +11,9 @@ import {expect} from 'chai';
 import App from '../../src/components/app';
 
 describe('App', () => {
-  it('has a heading', () => {
+  it('has a search box that is auto focused', () => {
     const component = renderIntoDocument(<App />);
-    const heading = findRenderedDOMComponentWithTag(component, 'h1');
-    expect(heading.textContent).to.equal('Where are my bands?');
+    const searchBox = findRenderedDOMComponentWithTag(component, 'input');
+    expect(searchBox).to.equal(document.activeElement);
   });
 });
