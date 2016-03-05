@@ -9,3 +9,6 @@ Object.keys(window).forEach((key) => {
     global[key] = window[key];
   }
 });
+
+// Ignore image file imports during tests.
+require.extensions['.png'] = () => { return null; }

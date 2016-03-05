@@ -4,6 +4,8 @@ import classNames from 'classnames';
 
 import SearchResult from './search-result';
 
+import logo from '../../assets/logo.png';
+
 class Search extends React.Component {
   constructor(props) {
     super(props);
@@ -52,7 +54,10 @@ class Search extends React.Component {
     return (
       <div className="push-top">
         <div className="ui four column centered grid">
-          <div className="eight wide column">
+          <div className="ten wide column">
+            <div className="ui center aligned container">
+              <img className="logo" src={logo} />
+            </div>
             <div className={searchClass}>
               <input
                 type="text"
