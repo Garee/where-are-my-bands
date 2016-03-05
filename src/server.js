@@ -21,12 +21,22 @@ if (!isProduction) {
 const staticPath = path.resolve(__dirname, '../dist');
 app.use(express.static(staticPath));
 
+let eventCache = new Map();
+
 // Serve a JSON list of events when queried.
 app.get('/events/:artist', (req, res) => {
-  const artist = req.params.artist;
+  const artist = req.params.artist.toLowerCase();
+
+  // Check the cache first.
+  if (eventCache.has(artist)) {
+    console.log("Using cache.");
+    return res.json(eventCache.get(artist));
+  }
+
   const url = `http://api.bandsintown.com/artists/${artist}/events.json?app_id=wamb&api_version=2.0`;
   axios.get(url)
     .then(response => {
+      eventCache.set(artist, response.data);
       res.json(response.data);
     })
     .catch(error => {
