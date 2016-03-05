@@ -5,10 +5,10 @@ class SearchResult extends React.Component {
     const eventCards = this.props.events.map(event => {
       const artist = event.artists[0];
       const website = artist.website ? artist.website : artist.facebook_page_url;
-      const mapURL = `https://www.google.com/maps/@${event.venue.latitude},${event.venue.longitude},15z`;
+      const mapURL = `https://www.google.com/maps/place/${event.venue.name}/@${event.venue.latitude},${event.venue.longitude},15z`;
 
       return (
-        <div className="ui card" key={event.id}>
+        <div className="ui blue card" key={event.id}>
           <a className="image" href={website}>
             <img src={event.artists[0].image_url} />
           </a>

@@ -1,7 +1,7 @@
 .app {
   height: 100%;
   background-color: #EEEEEE;
-  border-top: 4px solid #7AA5D2;
+  border-top: 4px solid black;
   overflow: auto;
 }
 
@@ -11,14 +11,6 @@
 
 .push-bottom {
   margin-bottom: 2em;
-}
-
-.middle {
-  top: 24%;
-}
-
-.main-header {
-  color: red;
 }
 
 .logo {

@@ -46,6 +46,7 @@ class Search extends React.Component {
   }
 
   render() {
+    // Display a loading spinner if we're requesting results.
     const searchClass = classNames(
       'ui huge fluid icon input',
       {'loading': this.state.isLoading}
