@@ -4,8 +4,8 @@
   "description": "Search for gigs by artist and location.",
   "main": "server.js",
   "scripts": {
-    "start": "NODE_ENV=development nodemon --exec babel-node ./src/server.js",
-    "test": "NODE_ENV=test mocha --compilers js:babel-core/register --require ./test/test_setup.js 'test/**/*.@(js)'",
+    "start": "NODE_ENV=development nodemon --exec babel-node ./src/server.js --ignore src/components/",
+    "test": "NODE_ENV=test mocha --compilers js:babel-core/register --require ignore-styles --require ./test/test_setup.js 'test/**/*.@(js)'",
     "test:watch": "npm run test -- --watch"
   },
   "repository": {
@@ -44,6 +44,7 @@
     "chai": "^3.5.0",
     "css-loader": "^0.23.1",
     "html-webpack-plugin": "^2.9.0",
+    "ignore-styles": "^1.2.0",
     "jsdom": "^8.1.0",
     "mocha": "^2.4.5",
     "nodemon": "^1.9.1",

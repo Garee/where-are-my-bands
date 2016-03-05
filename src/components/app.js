@@ -1,9 +1,15 @@
 import React from 'react';
 
+import Search from './search';
+
+import '../styles/app.css';
+
 export default React.createClass({
   render: () => {
     return (
-      <h1>Where are my bands?</h1>
+      <div>
+        <Search />
+      </div>
     );
   }
 });
