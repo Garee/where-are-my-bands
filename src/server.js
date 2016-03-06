@@ -7,6 +7,9 @@ import webpackDevMiddleware from 'webpack-dev-middleware';
 import webpackHotMiddleware from 'webpack-hot-middleware';
 import webpackConfig from '../webpack.config';
 
+const appID = "wherearemybands.com";
+const oneHourInMillis = 1000 * 60 * 60;
+
 const app = express();
 
 // Hot load react components in dev environment.
@@ -22,6 +25,7 @@ const staticPath = path.resolve(__dirname, '../dist');
 app.use(express.static(staticPath));
 
 // Cache search results to avoid repeat requests.
+// TODO: Cache in persistant storage rather than in-memory.
 let eventCache = new Map();
 
 // Serve a JSON list of events when queried.
@@ -33,10 +37,18 @@ app.get('/events/:artist', (req, res) => {
     return res.json(eventCache.get(artist));
   }
 
-  const url = `http://api.bandsintown.com/artists/${artist}/events.json?app_id=wamb&api_version=2.0`;
+  const url = `http://api.bandsintown.com/artists/${artist}/events.json?app_id=${appID}&api_version=2.0`;
   axios.get(url)
     .then(response => {
+      // Cache the result.
       eventCache.set(artist, response.data);
+
+      // Clear the cached result after an hour for updates.
+      setTimeout(() => {
+        console.log("Clearing cache");
+        eventCache.delete(artist);
+      }, oneHourInMillis);
+
       res.json(response.data);
     })
     .catch(error => {
