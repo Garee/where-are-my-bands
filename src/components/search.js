@@ -25,6 +25,7 @@ class Search extends React.Component {
   }
 
   handleKeyPress(event) {
+    // The user searches with non-empty input.
     if (event.key === 'Enter' && this.state.query !== '') {
       this.setState({isLoading: true});
 

@@ -21,6 +21,7 @@ if (!isProduction) {
 const staticPath = path.resolve(__dirname, '../dist');
 app.use(express.static(staticPath));
 
+// Cache search results to avoid repeat requests.
 let eventCache = new Map();
 
 // Serve a JSON list of events when queried.
@@ -29,7 +30,6 @@ app.get('/events/:artist', (req, res) => {
 
   // Check the cache first.
   if (eventCache.has(artist)) {
-    console.log("Using cache.");
     return res.json(eventCache.get(artist));
   }
 
