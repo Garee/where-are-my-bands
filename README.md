@@ -1,23 +1,39 @@
 # [wherearemybands.com](https://wherearemybands.com)
 
-A web application to search for gigs by artist and location.
+**Where are my bands?** is a web application that allows you to search for you favourite band's upcoming events.
 
-#### Install:
+![BuildStatus](https://travis-ci.org/Garee/where-are-my-bands.svg?branch=master)
+
+## Quick Start
+
+Install:
 
 ```shell
 $ npm install
 ```
 
-#### Test:
+Test:
 
 ```shell
 $ npm test
 ```
 
-#### Run:
+Run:
 
 ```shell
 $ npm start
 ```
 
-Open http://localhost:3000/.
+Navigate to http://localhost:3000/ in your favourite browser.
+
+## Technology Stack
+
+- Semantic UI
+- ReactJS
+- ExpressJS
+- NodeJS
+- NGINX
+
+## Data Source
+
+All event data is sourced from the [Bandsintown API](http://www.bandsintown.com/api/overview).

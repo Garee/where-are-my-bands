@@ -1,23 +1,23 @@
 import React from 'react';
 import classNames from 'classnames'
 
-const cardColors = [
-  'red',
-  'orange',
-  'yellow',
-  'olive',
-  'green',
-  'teal',
-  'blue',
-  'violet',
-  'purple',
-  'pink',
-  'brown',
-  'grey',
-  'black'
-];
-
 function randomCardColor() {
+  const cardColors = [
+    'red',
+    'orange',
+    'yellow',
+    'olive',
+    'green',
+    'teal',
+    'blue',
+    'violet',
+    'purple',
+    'pink',
+    'brown',
+    'grey',
+    'black'
+  ];
+
   return cardColors[Math.floor(Math.random() * cardColors.length)];
 }
 
@@ -27,7 +27,7 @@ class SearchResult extends React.Component {
       const artist = event.artists[0];
       const website = artist.website ? artist.website : artist.facebook_page_url;
       const venue = event.venue;
-      
+
       const mapURL = `https://www.google.com/maps/place/${venue.name}/@${venue.latitude},${venue.longitude},15z`;
 
       // Disable the Buy Tickets button if they are unavailable.
@@ -74,7 +74,7 @@ class SearchResult extends React.Component {
 
     return (
       <div className="row push-top">
-          <div className="ui link cards centered">
+          <div className="ui link cards centered" ref="results">
             {eventCards}
           </div>
       </div>

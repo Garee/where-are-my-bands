@@ -1,5 +1,5 @@
 {
-  "name": "where-are-my-bands",
+  "name": "wherearemybands.com",
   "version": "1.0.0",
   "description": "Search for gigs by artist and location.",
   "main": "server.js",
@@ -10,7 +10,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Garee/where-are-my-bands.git"
+    "url": "git+https://github.com/Garee/wherearemybands.com.git"
   },
   "keywords": [
     "gig",
@@ -23,9 +23,9 @@
   "author": "Gary Blackwood",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/Garee/where-are-my-bands/issues"
+    "url": "https://github.com/Garee/wherearemybands.com/issues"
   },
-  "homepage": "https://github.com/Garee/where-are-my-bands#readme",
+  "homepage": "https://github.com/Garee/wherearemybands.com#readme",
   "dependencies": {
     "axios": "^0.9.1",
     "express": "^4.13.4",

@@ -11,9 +11,10 @@ import {expect} from 'chai';
 import App from '../../src/components/app';
 
 describe('App', () => {
-  it('has a search box that is auto focused', () => {
+  it('has a search box that is auto focused with an empty inital value', () => {
     const component = renderIntoDocument(<App />);
     const searchBox = findRenderedDOMComponentWithTag(component, 'input');
     expect(searchBox).to.equal(document.activeElement);
+    expect(searchBox.value).to.equal('');
   });
 });
