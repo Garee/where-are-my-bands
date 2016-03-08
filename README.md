@@ -1,8 +1,8 @@
 # [wherearemybands.com](https://wherearemybands.com)
 
-**Where are my bands?** is a web application that allows you to search for you favourite band's upcoming events.
+**Where are my bands?** is a web application that allows you to search for your favourite band's upcoming events.
 
-![BuildStatus](https://travis-ci.org/Garee/where-are-my-bands.svg?branch=master)
+![BuildStatus](https://travis-ci.org/Garee/wherearemybands.com.svg?branch=master)
 
 ![Screenshot](https://googledrive.com/host/0B6xpBIlxAFeqOXBYdVpXemlKSTA/wherearemybands.png)
 
