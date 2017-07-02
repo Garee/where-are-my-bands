@@ -4,8 +4,6 @@
 
 ![BuildStatus](https://travis-ci.org/Garee/wherearemybands.com.svg?branch=master)
 
-![Screenshot](https://googledrive.com/host/0B6xpBIlxAFeqOXBYdVpXemlKSTA/wherearemybands.png)
-
 ## Quick Start
 
 Install:
